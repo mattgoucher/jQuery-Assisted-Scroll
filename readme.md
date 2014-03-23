@@ -23,6 +23,20 @@ $(function() {
 });
 ```
 
+#### API
+A simple API is provided so you can add your own swipe/touch bindings
+```javascript
+$(function() {
+    var assistedScroll = $("#slides").assistedScroll().data("assistedScroll");
+
+    // Next Slide
+    assistedScroll.next();
+
+    // Previous Slide
+    assistedScroll.prev();
+});
+```
+
 #### Contributing
 This project utilizes [Grunt JS](http://gruntjs.com/) to compile/minify javascripts. If you haven't already, read the [getting started guide](http://gruntjs.com/getting-started). After Grunt has been installed, open your terminal, and cd into the project directory. Then:
 

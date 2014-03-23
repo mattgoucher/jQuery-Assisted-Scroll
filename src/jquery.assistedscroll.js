@@ -94,6 +94,11 @@
 
 
         init();
+
+        return {
+            "next": nextSlide,
+            "prev": prevSlide
+        };
     }
 
 
