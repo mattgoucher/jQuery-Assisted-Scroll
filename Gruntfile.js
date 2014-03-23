@@ -12,7 +12,7 @@ module.exports = function(grunt) {
       },
       build: {
         src: 'src/jquery.assistedscroll.js',
-        dest: 'dist/jquery.assistedscroll-<%= pkg.version %>.js'
+        dest: 'dist/jquery.assistedscroll.min.js'
       }
     },
     watch: {
