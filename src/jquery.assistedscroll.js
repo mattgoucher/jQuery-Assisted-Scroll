@@ -107,11 +107,4 @@
         }
     };
 
-
-    $(function() {
-        $("#slides").assistedScroll({
-            startingZ: 10
-        });
-    });
-
 }());
