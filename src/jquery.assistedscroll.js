@@ -2,12 +2,16 @@
 
     function AssistedScroll(el, options) {
 
-        var slides, totalSlides, currentSlide, currentSlideIndex, transitioning;
+        var win, slides, totalSlides, currentSlide, currentSlideIndex, transitioning, outOfSlides;
 
         function init() {
 
             // Are we transitioning?
             transitioning = false;
+
+            // Scrolling Business
+            win         = $(window);
+            outOfSlides = false;
 
             // Cache Slides
             slides            = el.children();
@@ -23,16 +27,21 @@
             // Bind Mousewheel Event
             el.on("mousewheel", function(e) {
 
-                // Prevent Default Browser Functionality
-                e.preventDefault();
-                e.stopPropagation();
-
                 if (Math.abs(e.deltaX) < Math.abs(e.deltaY)) {
                     if (e.deltaY > 0) {
-                        prevSlide();
+                        if (win.scrollTop() === 0) {
+                            outOfSlides = false;
+                            prevSlide();
+                        }
                     }else{
                         nextSlide();
                     }
+                }
+
+                // Prevent Default Browser Functionality
+                if (!outOfSlides){
+                    e.preventDefault();
+                    e.stopPropagation();
                 }
             });
         }
@@ -55,6 +64,12 @@
             currentSlide.addClass("old").removeClass("active");
             currentSlide      = currentSlide.next().addClass("active");
             currentSlideIndex = currentSlideIndex + 1;
+
+            if ((currentSlideIndex + 1) === totalSlides) {
+                outOfSlides = true;
+            }else{
+                outOfSlides = false;
+            }
 
             resetTransitioning();
         }

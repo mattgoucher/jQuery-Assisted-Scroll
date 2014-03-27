@@ -47,3 +47,10 @@ html, body {
         .slides .b { background: #ff00ff; }
         .slides .c { background: #ccc; }
         .slides .d { background: #222; }
+
+        /* More Content */
+        .more-content {
+            position: relative;
+            top: 100%;
+        }
+        .more-content p { margin: 0 0 15px 0; }
